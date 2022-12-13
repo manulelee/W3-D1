@@ -87,15 +87,14 @@ boundary(101);
 /* SCRIVI QUI LA TUA RISPOSTA */
 console.log("Esercizio 5");
 function epify(stringa) {
-  if (stringa !== "EPICODE") {
-    stringa = stringa + " " + "EPICODE";
+  if (stringa.startsWith("EPICODE")) {
   } else {
-    stringa;
+    stringa = stringa + " " + "EPICODE";
   }
   console.log(stringa);
 }
 epify("Emanuele");
-epify("EPICODE");
+epify("Epicode");
 
 /* ESERCIZIO 6
  Scrivi una funzione di nome "check3and7" che accetta un numero positivo come parametro. La funzione deve controllare che il parametro sia un multiplo
@@ -128,12 +127,13 @@ check3and7(5);
 
 console.log("Esercizio 7");
 function reverseString(stringa) {
-  let toReverse = stringa;
-  splice.toReverse("");
-  console.log(toReverse);
-  for (let i = 0; i < stringa.lenght; i++) {}
+  let toDivide = stringa.split("");
+  let toReverse = toDivide.reverse("");
+  let risultato = toReverse.join("");
+  console.log(risultato);
 }
 reverseString("EPICODE");
+
 /* ESERCIZIO 8
  Scrivi una funzione di nome "upperFirst", che riceve come parametro una stringa formata da diverse parole.
  La funzione deve rendere maiuscola la prima lettera di ogni parola contenuta nella stringa.
@@ -141,6 +141,30 @@ reverseString("EPICODE");
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 console.log("Esercizio 8");
+function upperFirst(stringa) {
+  let finalRes = [];
+  let toDivideWords = [];
+  let toDivideLetters = [];
+  toDivideWords = stringa.split(" ");
+  //console.log(toDivideWords);
+  for (let i = 0; i < toDivideWords.length; i++) {
+    toDivideLetters = toDivideWords[i].split(""); // assegna all' array toDivideLetters  l'array delle parole diviso (split) in lettere
+    // per (i < del numero di parole) volte:
+    let res = "";
+    for (let j = 0; j < toDivideLetters.length; j++) {
+      if (j === 0) {
+        let capitalizeFirst = toDivideLetters[j].toUpperCase();
+        res += capitalizeFirst;
+      } else {
+        res += toDivideLetters[j];
+      }
+      //console.log(toDivideLetters[j]);
+    }
+    finalRes.push(res + " ");
+  }
+  console.log(finalRes.join(""));
+}
+upperFirst("Ciao io sono stanco");
 
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
@@ -149,10 +173,30 @@ console.log("Esercizio 8");
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 console.log("Esercizio 9");
+function cutString(stringa) {
+  let result;
+  let toDivide = stringa.split("");
+  //console.log(toDivide);
+  toDivide.shift();
+  toDivide.pop();
+  result = toDivide.join("");
+  return console.log(result);
+}
+cutString("Buongiorno");
 
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
 console.log("Esercizio 10");
+function giveMeRandom(n) {
+  let a = [];
+  for (let i = 0; i < n; i++) {
+    a.push(Math.floor(Math.random() * 11));
+  }
+  return a;
+}
+
+console.log(giveMeRandom(5));
